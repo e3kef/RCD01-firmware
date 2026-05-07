@@ -53,8 +53,7 @@ pico_enable_stdio_uart(RCD01_firmware 1)
 pico_enable_stdio_usb(RCD01_firmware 0)
 
 # Add the standard library to the build
-target_link_libraries(RCD01_firmware
-        pico_stdlib)
+target_link_libraries(RCD01_firmware pico_stdlib tinyusb_device tinyusb_board)
 
 # Add the standard include files to the build
 target_include_directories(RCD01_firmware PRIVATE
