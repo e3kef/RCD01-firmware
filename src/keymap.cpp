@@ -34,6 +34,27 @@ static bool hid_key_to_modifier(uint8_t hid_key, uint8_t& modifier){
     }
 }
 
+static KeyAction resolve_key_action(uint8_t key_id){
+    const bool fn_pressed = matrix_pressed(KEY_FN);
+    const bool select_pressed = matrix_pressed(KEY_SELECT_LAYER);
+
+    if(fn_pressed){
+        const KeyAction fn_action = KEYMAP_FN[key_id];
+        if(fn_action.key != KEY_TRANSPARENT){
+            return fn_action;
+        }
+    }
+
+    if(select_pressed){
+        const KeyAction select_action = KEYMAP_LAYER[key_id];
+        if(select_action.key != KEY_TRANSPARENT){
+            return select_action;
+        }
+    }
+
+    return KEYMAP_BASE[key_id];
+}
+
 KeyboardReport keymap_make_report(){
     KeyboardReport report{};
     report.modifiers = 0;
@@ -49,20 +70,26 @@ KeyboardReport keymap_make_report(){
             continue;
         }
 
-        const uint8_t hid_key = KEYMAP_HID[key_id];
-
-        if(hid_key == HID_KEY_NONE){
+        if(key_id == KEY_FN || key_id == KEY_SELECT_LAYER){
             continue;
         }
 
+        const KeyAction action = resolve_key_action(key_id);
+
+        if(action.key == HID_KEY_NONE || action.key == KEY_TRANSPARENT){
+            continue;
+        }
+
+        report.modifiers |= action.mods;
+
         uint8_t modifier = 0;
-        if(hid_key_to_modifier(hid_key, modifier)){
+        if(hid_key_to_modifier(action.key, modifier)){
             report.modifiers |= modifier;
             continue;
         }
 
         if(keycode_count < 6){
-            report.keycodes[keycode_count] = hid_key;
+            report.keycodes[keycode_count] = action.key;
             keycode_count++;
         }
     }
