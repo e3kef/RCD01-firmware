@@ -68,7 +68,7 @@ inline constexpr uint8_t KEYMAP_HID[73] = {
     HID_KEY_SPACE,       // 54
     HID_KEY_ENTER,       // 55
     HID_KEY_KANJI2,      // 56 JP?
-    HID_KEY_GUI_LEFT,    // 57 win?
+    HID_KEY_GUI_RIGHT,    // 57 win?
     HID_KEY_NONE,    // 58
     HID_KEY_NONE,    // 59
     HID_KEY_NONE,    // 60
