@@ -49,9 +49,9 @@
 //--------------------------------------------------------------------
 
 // defined by compiler flags for flexibility
-#ifndef CFG_TUSB_MCU
-// #error CFG_TUSB_MCU must be defined
-#endif
+// #ifndef CFG_TUSB_MCU
+// // #error CFG_TUSB_MCU must be defined
+// #endif
 
 // #ifndef CFG_TUSB_OS
 // #define CFG_TUSB_OS           OPT_OS_NONE
@@ -59,6 +59,10 @@
 
 #ifndef CFG_TUSB_DEBUG
 #define CFG_TUSB_DEBUG        0
+#endif
+
+#ifndef CFG_TUSB_RHPORT0_MODE
+#define CFG_TUSB_RHPORT0_MODE   (OPT_MODE_DEVICE)
 #endif
 
 // Enable Device stack

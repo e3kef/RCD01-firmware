@@ -57,7 +57,7 @@ target_link_libraries(RCD01_firmware pico_stdlib tinyusb_device tinyusb_board)
 
 # Add the standard include files to the build
 target_include_directories(RCD01_firmware PRIVATE
-        ${CMAKE_CURRENT_LIST_DIR}
+        ${CMAKE_CURRENT_LIST_DIR}/src
 )
 
 # Add any user requested libraries
