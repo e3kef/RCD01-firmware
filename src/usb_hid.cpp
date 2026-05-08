@@ -23,7 +23,7 @@ bool usb_hid_send_report(const KeyboardReport& report){
 
     return tud_hid_keyboard_report(
         0,
-        report.modifires,
+        report.modifiers,
         report.keycodes
     );
 }

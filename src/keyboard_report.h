@@ -4,6 +4,6 @@
 
 struct KeyboardReport
 {
-    uint8_t modifires;
+    uint8_t modifiers;
     uint8_t keycodes[6];
 };
