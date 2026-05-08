@@ -14,18 +14,21 @@ void transport_task(){
 }
 
 bool transport_ready(){
-    return usb_hid_ready; // || ble_hid_ready();
+    return usb_hid_ready(); // || ble_hid_ready();
 }
 
-void transport_send_report(const KeyboardReport& report){
-    if(usb_hid_ready()){
-        usb_hid_send_report(report);
+bool transport_send_report(const KeyboardReport& report){
+    if(!usb_hid_ready()){
+        return false;
     } 
-    // if use ble, pls add else if (ble_hid_ready())
+
+    return usb_hid_send_report(report);
 }
 
-void transport_send_release(){
-    if(usb_hid_ready()){
-        usb_hid_send_release();
+bool transport_send_release(){
+    if(!usb_hid_ready()){
+        return false;
     }
+
+    return usb_hid_send_release();
 }

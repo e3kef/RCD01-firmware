@@ -16,24 +16,24 @@ bool usb_hid_ready(){
     return tud_mounted() && tud_hid_ready();
 }
 
-void usb_hid_send_report(const KeyboardReport& report){
+bool usb_hid_send_report(const KeyboardReport& report){
     if(!usb_hid_ready()){
-        return;
+        return false;
     }
 
-    tud_hid_keyboard_report(
+    return tud_hid_keyboard_report(
         0,
         report.modifires,
         report.keycodes
     );
 }
 
-void usb_hid_send_release(){
+bool usb_hid_send_release(){
     if(!usb_hid_ready()){
-        return;
+        return false;
     }
 
-    tud_hid_keyboard_report(
+    return tud_hid_keyboard_report(
         0,
         0,
         nullptr
