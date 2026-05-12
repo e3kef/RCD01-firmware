@@ -79,7 +79,7 @@ inline constexpr KeyAction KEYMAP_BASE[MATRIX_KEY_COUNT] = {
     KC(HID_KEY_K),       // 33
     KC(HID_KEY_L),       // 34
     KC(HID_KEY_SEMICOLON),       // 35
-    KC(HID_KEY_KEYPAD_COLON),    // 36
+    KC(HID_KEY_APOSTROPHE),      // 36: JIS colon
 
     KC(HID_KEY_SHIFT_LEFT),      // 37
     KC(HID_KEY_Z),       // 38
@@ -118,7 +118,7 @@ inline constexpr KeyAction KEYMAP_BASE[MATRIX_KEY_COUNT] = {
     KC(HID_KEY_NONE),    // 69
     KC(HID_KEY_NONE),    // 70
     KC(HID_KEY_NONE),    // 71
-    KC(HID_KEY_NONE),    // 72
+    KC(HID_KEY_NONE)    // 72
 };
 
 // select layer
@@ -136,7 +136,7 @@ inline constexpr KeyAction KEYMAP_LAYER[MATRIX_KEY_COUNT] = {
     TRNS(),       // 9
     TRNS(),       // 10
     TRNS(),       // 11
-    TRNS(),       // 12
+    KC(HID_KEY_PERIOD),       // 12
 
     TRNS(),       // 13
     TRNS(),       // 14
@@ -162,7 +162,7 @@ inline constexpr KeyAction KEYMAP_LAYER[MATRIX_KEY_COUNT] = {
     KM(HID_KEY_9, MOD_LSHIFT),       // 33 )
     KM(HID_KEY_BRACKET_RIGHT, MOD_LSHIFT),       // 34 {
     KM(HID_KEY_BACKSLASH, MOD_LSHIFT),      // 35 }
-    TRNS(),       // 36 
+    KC(HID_KEY_KANJI3),       // 36 
 
     TRNS(),       // 37
     TRNS(),       // 38
@@ -170,7 +170,7 @@ inline constexpr KeyAction KEYMAP_LAYER[MATRIX_KEY_COUNT] = {
     KM(HID_KEY_COMMA, MOD_LSHIFT),       // 40
     KM(HID_KEY_PERIOD, MOD_LSHIFT),      // 41
     KM(HID_KEY_3, MOD_LSHIFT),       // 42
-    KC(HID_KEY_MINUS),               // 43
+    KC(HID_KEY_MINUS),              // 43 JP long vowel mark / yen
     KM(HID_KEY_SEMICOLON, MOD_LSHIFT),       // 44
     TRNS(),       // 45
     KM(HID_KEY_1, MOD_LSHIFT),       // 46

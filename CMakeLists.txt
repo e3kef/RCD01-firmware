@@ -53,7 +53,21 @@ pico_enable_stdio_uart(RCD01_firmware 1)
 pico_enable_stdio_usb(RCD01_firmware 0)
 
 # Add the standard library to the build
-target_link_libraries(RCD01_firmware pico_stdlib tinyusb_device tinyusb_board)
+target_link_libraries(
+    RCD01_firmware
+    pico_stdlib
+    tinyusb_device
+    tinyusb_board
+    pico_btstack_ble
+    pico_btstack_cyw43
+    pico_cyw43_arch_none    
+)
+
+pico_btstack_make_gatt_header(
+    RCD01_firmware PRIVATE
+    ${CMAKE_CURRENT_LIST_DIR}/src/ble_profile.gatt
+    ${PICO_SDK_PATH}/lib/btstack/src/ble/gatt-service
+)
 
 # Add the standard include files to the build
 target_include_directories(RCD01_firmware PRIVATE
